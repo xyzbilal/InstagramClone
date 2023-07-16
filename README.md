@@ -31,8 +31,8 @@ A SwiftUI application that includes some basic instagram features.
 * upload comment
 * DM
 
-  ## Known  Issues
-  * UI doesnt update immediately 
+## Known  Issues
+* UI doesnt update immediately 
 
   Reference [Tutorial](https://www.youtube.com/watch?v=7UKUCZuaVlA&ab_channel=AppStuff)
 
