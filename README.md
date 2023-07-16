@@ -1,7 +1,7 @@
 # InstagramClone
 
 A SwiftUI application that includes some basic instagram features. 
-Some Features
+###Some Features
 * Signup
 * Login
 * Fetch post from followed users
@@ -9,14 +9,14 @@ Some Features
 * Like, unlike posts
 * Edit profile
 * Upload a post
-  
+
+ ###Development  
 * Firebase is used as a backend
 * MVVM architecture applied
 * image caching  for profile photos
 * OOP
 
-Some SwiftUi features
-
+###Some SwiftUi features
 * ViewModifiers
 * ObservableObject
 * EnvironmentObject
