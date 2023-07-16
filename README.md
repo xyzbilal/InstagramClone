@@ -24,7 +24,15 @@ Some SwiftUi features
 * async await
 * Combine
 * PhotosUI
-  
+
+
+## TODO :
+* show post comments (partially added)
+* upload comment
+* DM
+
+  ## Known  Issues
+  * UI doesnt update immediately 
 
   Reference [Tutorial](https://www.youtube.com/watch?v=7UKUCZuaVlA&ab_channel=AppStuff)
 
