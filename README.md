@@ -34,10 +34,10 @@ A SwiftUI application that includes some basic instagram features.
 ## Known  Issues
 * UI doesnt update immediately 
 
-  Reference [Tutorial](https://www.youtube.com/watch?v=7UKUCZuaVlA&ab_channel=AppStuff)
+Reference [Tutorial](https://www.youtube.com/watch?v=7UKUCZuaVlA&ab_channel=AppStuff)
 
-  Feel free to fork and use for any kind of purpose
-  
+Feel free to fork and use for any kind of purpose
+
 ![Simulator Screenshot - iPhone 14 Pro Max - 2023-07-16 at 14 05 40](https://github.com/xyzbilal/InstagramClone/assets/18241412/ce061fde-4a15-4264-8adb-412261f17dea)
 
 ![Simulator Screenshot - iPhone 14 Pro Max - 2023-07-16 at 14 05 47](https://github.com/xyzbilal/InstagramClone/assets/18241412/395dbd2c-cd8c-4277-b613-e47e2fb8c62a)
