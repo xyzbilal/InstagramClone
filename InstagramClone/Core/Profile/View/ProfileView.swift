@@ -22,7 +22,7 @@ struct ProfileView: View {
                  ProfileHeadrView(user: user)
                     Divider()
                     
-                    PostsGridView(posts:posts)
+                    PostsGridView(user:user)
                     
                 }
             }
@@ -52,6 +52,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(user:User.MOCK_USERS[3])
+        ProfileView(user:User.MOCK_USERS[2])
     }
 }

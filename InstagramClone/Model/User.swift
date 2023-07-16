@@ -14,21 +14,25 @@ struct User:Identifiable,Codable,Hashable{
     var fullname:String?
     var bio:String?
     let email:String
-    
+    var followers:[String]?
+    var following:[String]?
     
     var isCurrentUser:Bool{
         guard let currentUid = Auth.auth().currentUser?.uid else {return false}
                 return currentUid == id
     }
     
+    var isFollowedUser:Bool{
+        return AuthService.shared.currentUser?.following?.contains(id) ?? false
+    }
     
 }
 
 extension User{
     static var MOCK_USERS:[User] = [
-        .init(id: NSUUID().uuidString, username: "einstein1986", profileImage: "einstein",fullname: "Albert Einstein",bio:"I found it", email: "einstein@gmail.com"),
-        .init(id: NSUUID().uuidString, username: "tesla.nikolai", profileImage: "tesla",fullname: "Nikolai Tesla", bio:"Edison is thief", email: "tesla@gmail.com"),
-        .init(id: NSUUID().uuidString, username: "thomas_edison", profileImage: "edison",fullname: "Thomas Edison",bio:"AC is evil", email: "edison@gmail.com"),
-        .init(id: NSUUID().uuidString, username: "newton", profileImage: "newton",fullname: "Isaac Newton ",bio:"Gravityyyyy", email: "newton@gmail.com"),
+        .init(id: NSUUID().uuidString, username: "einstein1986", profileImage: nil,fullname: "Albert Einstein",bio:"I found it", email: "einstein@gmail.com",following: []),
+        .init(id: NSUUID().uuidString, username: "tesla.nikolai", profileImage: nil,fullname: "Nikolai Tesla", bio:"Edison is thief", email: "tesla@gmail.com",following: []),
+        .init(id: NSUUID().uuidString, username: "thomas_edison", profileImage: nil,fullname: "Thomas Edison",bio:"AC is evil", email: "edison@gmail.com",following: []),
+        .init(id: NSUUID().uuidString, username: "newton", profileImage: nil,fullname: "Isaac Newton ",bio:"Gravityyyyy", email: "newton@gmail.com",following: []),
     ]
 }

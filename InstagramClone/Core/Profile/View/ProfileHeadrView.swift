@@ -17,7 +17,7 @@ struct ProfileHeadrView: View {
             editProfileButton()
         }.padding(.horizontal)
             .fullScreenCover(isPresented:  $showEditProfile) {
-                Text("BLBLALALDSALFSD")
+               EditProfileView(user: user)
             }
     }
     
@@ -28,15 +28,7 @@ struct ProfileHeadrView: View {
      
  
                 HStack{
-                    Image(user.profileImage ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80,height:80)
-                        .padding(.all,3)
-                        .overlay(RoundedRectangle(cornerRadius: 43)
-                            .stroke(Color.gray,lineWidth:1)
-                        )
-                        .clipShape(Circle())
+                  CircularProfileImageView(user: user)
                     Spacer()
                     HStack{
                         UsersStatsView(value: 10, title: "Posts")
@@ -72,19 +64,25 @@ struct ProfileHeadrView: View {
             if user.isCurrentUser{
                 showEditProfile.toggle()
             }else{
-                
+                Task{
+                   try? await UserService.followOrUnfollowUser(withUid: user.id)
+                }
+               
             }
         } label: {
-            Text(user.isCurrentUser ? "Edit Profile" : "Follow")
+            Text(user.isCurrentUser ? "Edit Profile" :
+                    user.isFollowedUser ? "Unfollow" :
+                    
+                    "Follow")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .frame(height: 32)
                 .frame(maxWidth:.infinity)
-                .background(user.isCurrentUser ? .white : Color(.systemBlue))
-                .foregroundColor(user.isCurrentUser ? .black : .white)
+                .background(user.isCurrentUser || user.isFollowedUser ? .white : Color(.systemBlue))
+                .foregroundColor(user.isCurrentUser || user.isFollowedUser ? .black : .white)
                 .cornerRadius(6)
                 .overlay(RoundedRectangle(cornerRadius: 6)
-                    .stroke(user.isCurrentUser ? .gray : .blue,lineWidth:1)
+                    .stroke(user.isCurrentUser || user.isFollowedUser ? .gray : .blue,lineWidth:1)
                 )
                 .padding(.horizontal)
         }

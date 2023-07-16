@@ -18,7 +18,7 @@ struct CurrentUserProfileView: View {
                      Divider()
                      
                      
-                     PostsGridView(posts: Post.MOCK_POSTS)
+                     PostsGridView(user:user)
                      
                     
                

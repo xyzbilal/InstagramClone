@@ -13,10 +13,13 @@ struct ContentView: View {
     var body: some View {
         Group {
             if viewModel.userSession == nil {
+                
+                
                 LoginView()
-                     .environmentObject(registrationViewModel)
+                    .environmentObject(registrationViewModel)
+                  
                
-            }else if let currentUser = viewModel.currentUSer{
+            }else if let currentUser = viewModel.currentUser{
                 MainTabView(user:currentUser)
             }
         }

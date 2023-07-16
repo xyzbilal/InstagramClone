@@ -16,8 +16,12 @@ struct SearchView: View {
             ScrollView {
                 LazyVStack(spacing:12){
                     ForEach(viewModel.users) { user in
-                     
-                        UserRow(user)
+                        if user.id != AuthService.shared.currentUser!.id{
+                            UserRow(user)
+                        }else{
+                            EmptyView()
+                        }
+                       
                     }
                 }
                 .searchable(text: $searchText,prompt: "Search")
@@ -36,11 +40,8 @@ struct SearchView: View {
         NavigationLink(value:user) {
             //profile image + name
             HStack{
-                Image(user.profileImage ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40,height: 40)
-                    .clipShape(Circle())
+                CircularProfileImageView(user:user,size:.small)
+               
                 VStack(alignment:.leading) {
                     Text(user.username)
                     .fontWeight(.semibold)
@@ -52,7 +53,28 @@ struct SearchView: View {
                 }  .font(.footnote)
                 Spacer()
                 
-            }.padding(.leading,8)
+               Button {
+                    Task{
+                        try await UserService.followOrUnfollowUser(withUid:user.id)
+                    }
+                } label: {
+                    Text(user.isFollowedUser ? "Unfollow" :
+                            
+                            "Follow")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .frame(height: 32)
+                        .frame(maxWidth:80)
+                        .background(user.isFollowedUser ? .white : Color(.systemBlue))
+                        .foregroundColor(user.isFollowedUser ? .black : .white)
+                        .cornerRadius(6)
+                        .overlay(RoundedRectangle(cornerRadius: 6)
+                            .stroke(user.isFollowedUser ? .gray : .blue,lineWidth:1)
+                        )
+                }
+
+                
+            }.padding(.horizontal,8)
         }
         .foregroundColor(.black)
     }
